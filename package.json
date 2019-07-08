@@ -1,0 +1,11 @@
+{
+    "name": "scto",
+    "version": "0.0.1",
+    "description": "Strings compare to OP model",
+    "main": "index.js",
+    "scripts": {
+        "test": "test"
+    },
+    "author": "cudr",
+    "license": "MIT"
+}
