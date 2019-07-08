@@ -9,7 +9,7 @@ const stringToOp = (str1, str2) => {
 
   for (i; i < maxLen; i++) {
     let operation = str1[i] !== str2[i] && shiftCompare(str1, str2, i);
-    console.log("operation", operation);
+
     if (operation) {
       const { type, offset } = operation;
       while (i < offset) {
