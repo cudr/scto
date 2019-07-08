@@ -1,11 +1,56 @@
 {
-    "name": "scto",
-    "version": "0.0.1",
-    "description": "Strings compare to OP model",
-    "main": "index.js",
-    "scripts": {
-        "test": "test"
-    },
-    "author": "cudr",
-    "license": "MIT"
+  "name": "scto",
+  "version": "0.0.1",
+  "description": "Strings compare to OP model",
+  "main": "src/index.js",
+  "scripts": {
+    "type-check": "tsc --noEmit",
+    "type-check:watch": "npm run type-check -- --watch",
+    "build": "npm run build:types && npm run build:js",
+    "build:types": "tsc --emitDeclarationOnly",
+    "build:js": "babel src --out-dir lib --extensions \".ts,.tsx\" --source-maps inline",
+    "format": "prettier --write",
+    "test": "jest"
+  },
+  "author": "cudr",
+  "license": "MIT",
+  "devDependencies": {
+    "@babel/core": "^7.5.0",
+    "@babel/preset-env": "^7.5.0",
+    "babel-jest": "^24.8.0",
+    "jest": "^24.8.0"
+  },
+  "dependencies": {
+    "@babel/cli": "^7.5.0",
+    "@babel/plugin-proposal-class-properties": "^7.5.0",
+    "@babel/plugin-proposal-object-rest-spread": "^7.5.1",
+    "@babel/preset-typescript": "^7.3.3",
+    "@types/jest": "^24.0.15",
+    "husky": "^3.0.0",
+    "lint-staged": "^9.1.0",
+    "prettier": "^1.18.2",
+    "ts-jest": "^24.0.2",
+    "tslint": "^5.18.0",
+    "tslint-config-prettier": "^1.18.0",
+    "typescript": "^3.5.2"
+  },
+  "jest": {
+    "roots": [
+      "<rootDir>/src"
+    ],
+    "transform": {
+      "^.+\\.ts?$": "ts-jest"
+    }
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "*.{ts,json,.babelrc}": [
+      "yarn run format",
+      "git add"
+    ]
+  }
 }
