@@ -1,6 +1,11 @@
-import { Insert, Drop, Replace } from "../operations";
+import { Insert, Drop, Replace, Collate } from "../operations";
 
-const shiftCompare = (origin, modifyed, i = 0, shift = 0) => {
+const shiftCompare = (
+  origin: Collate,
+  modifyed: Collate,
+  i: number = 0,
+  shift: number = 0
+) => {
   if (i >= Math.max(origin.length, modifyed.length)) return null;
 
   let isShorter = !origin[i];

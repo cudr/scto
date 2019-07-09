@@ -1,6 +1,5 @@
-export default (
-  str: string,
-  substr: string,
-  offset: number,
-  shift: number = 0
-) => str.slice(0, offset) + substr + str.slice(offset + shift);
+export default (source, data, offset: number, shift: number = 0) =>
+  source
+    .slice(0, offset)
+    .concat(data)
+    .concat(source.slice(offset + shift));

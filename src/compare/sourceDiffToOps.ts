@@ -1,20 +1,25 @@
 import shiftCompare from "./shiftCompare";
 import { drop, insert } from "../utils";
 
-const stringDiffToOps = (origin, modifyed) => {
+import { Operation, Replace, Insert, Drop } from '../operations'
+
+const sourceDiffToOps = (origin: string, modifyed: string) => {
   const maxLen = Math.max(origin.length, modifyed.length),
     operations = [];
 
   let i = 0;
 
   for (i; i < maxLen; i++) {
-    let operation =
+    let operation: Operation | null =
       origin[i] !== modifyed[i] && shiftCompare(origin, modifyed, i);
 
     if (operation) {
       operations.push(operation);
 
-      const { type, data, shift } = operation;
+      const { type } = operation;
+
+      const { data } = operation as Replace | Insert;
+      const { shift } = operation as Replace | Drop;
 
       if (type === "insert") {
         origin = insert(origin, data, i);
@@ -31,4 +36,4 @@ const stringDiffToOps = (origin, modifyed) => {
   return operations;
 };
 
-export default stringDiffToOps;
+export default sourceDiffToOps;
