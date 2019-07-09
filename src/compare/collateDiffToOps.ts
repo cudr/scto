@@ -1,7 +1,7 @@
 import shiftCompare from "./shiftCompare";
 import { drop, insert } from "../utils";
 
-import { Operation, Collate, Replace, Insert, Drop } from '../operations'
+import { Operation, Collate, Replace, Insert, Drop } from "../operations";
 
 const collateDiffToOps = (origin: Collate, modifyed: Collate) => {
   const maxLen = Math.max(origin.length, modifyed.length),
@@ -10,7 +10,7 @@ const collateDiffToOps = (origin: Collate, modifyed: Collate) => {
   let i = 0;
 
   for (i; i < maxLen; i++) {
-    let operation: Operation | null =
+    let operation: Operation =
       origin[i] !== modifyed[i] && shiftCompare(origin, modifyed, i);
 
     if (operation) {
@@ -26,7 +26,6 @@ const collateDiffToOps = (origin: Collate, modifyed: Collate) => {
         i += data.length;
       } else if (type === "replace") {
         origin = insert(origin, data, i, shift);
-        i += shift;
       } else if (type === "drop") {
         origin = drop(origin, i, shift);
       }

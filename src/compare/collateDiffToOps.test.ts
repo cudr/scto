@@ -7,10 +7,12 @@ let modifyed =
   "Yet so far hath discretion fought with nature That we with wisest sorrow — think on him, Together with remembrance of ourselves.";
 
 describe("source diff to operations", () => {
-  it("string diff equals", () => {
-    const operations = collateDiffToOps(origin, modifyed);
-    const applyed = applyOps(origin, operations);
+  it("list diff equals", () => {
+    const one = origin.split(" ");
+    const two = modifyed.split(" ");
 
-    expect(applyed).toBe(modifyed);
+    const applyed = applyOps(one, collateDiffToOps(one, two));
+
+    expect(applyed).toStrictEqual(two);
   });
 });

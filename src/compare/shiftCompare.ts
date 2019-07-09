@@ -23,9 +23,15 @@ const shiftCompare = (origin: Collate, modifyed: Collate, i: number = 0) => {
 
   const shiftPair = discretionShift(origin.slice(i), modifyed.slice(i));
 
-  console.log("shiftPair", shiftPair, origin.slice(i), modifyed.slice(i));
-
-  if (!shiftPair) return null;
+  if (!shiftPair) {
+    let op: Replace = {
+      type: "replace",
+      offset: i,
+      shift: origin.length - i,
+      data: modifyed.slice(i, modifyed.length)
+    };
+    return op;
+  }
 
   if (shiftPair[1] === 0) {
     let op: Drop = {
