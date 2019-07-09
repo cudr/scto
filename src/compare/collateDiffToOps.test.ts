@@ -1,4 +1,4 @@
-import sourceDiffToOps from "./sourceDiffToOps";
+import collateDiffToOps from "./collateDiffToOps";
 import { applyOps } from "../operations";
 
 let origin =
@@ -6,13 +6,10 @@ let origin =
 let modifyed =
   "Yet so far hath discretion fought with nature That we with wisest sorrow — think on him, Together with remembrance of ourselves.";
 
-describe("diff to operations", () => {
-  it("diff equals", () => {
-    const operations = sourceDiffToOps(origin, modifyed);
+describe("source diff to operations", () => {
+  it("string diff equals", () => {
+    const operations = collateDiffToOps(origin, modifyed);
     const applyed = applyOps(origin, operations);
-
-    console.log("operations", operations);
-    console.log("applyed", applyed);
 
     expect(applyed).toBe(modifyed);
   });
