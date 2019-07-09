@@ -10,7 +10,7 @@
     "build:types": "tsc --emitDeclarationOnly",
     "build:js": "babel src --out-dir lib --extensions \".ts,.tsx\" --source-maps inline",
     "format": "prettier --write",
-    "test": "jest src/compare/collateDiffToOps.test.ts "
+    "test": "jest src/compare/shiftCompare.test.ts "
   },
   "author": "cudr",
   "license": "MIT",
