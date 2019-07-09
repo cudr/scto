@@ -21,7 +21,7 @@ export interface Drop {
 
 export type Operation = Replace | Insert | Drop;
 
-export const applyOperation = (str: string, operation: Operation) => {
+export const applyOp = (str: string, operation: Operation) => {
   const { type, offset } = operation;
 
   const { data } = operation as Replace | Insert;
@@ -38,10 +38,10 @@ export const applyOperation = (str: string, operation: Operation) => {
   }
 };
 
-export const applyOperations = (str: string, operations: Array<Operation>) => {
+export const applyOps = (str: string, operations: Array<Operation>) => {
   if (!operations.length) return str;
 
   const [headOp, ...tailOps] = operations;
 
-  return applyOperations(applyOperation(str, headOp), tailOps);
+  return applyOps(applyOp(str, headOp), tailOps);
 };
