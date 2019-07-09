@@ -38,10 +38,28 @@ export const applyOp = (str: string, operation: Operation) => {
   }
 };
 
-export const applyOps = (str: string, operations: Array<Operation>) => {
-  if (!operations.length) return str;
+export const applyOps = (str: string, ops: Array<Operation>) => {
+  if (!ops.length) return str;
 
-  const [headOp, ...tailOps] = operations;
+  const [headOp, ...tailOps] = ops;
 
   return applyOps(applyOp(str, headOp), tailOps);
+};
+
+export const opGen = (
+  type: string,
+  offset: number,
+  shift: number = 0,
+  data?: string
+) => {
+  if (type === "insert") {
+    let op: Insert = { type, offset, data };
+    return op;
+  } else if (type === "replace") {
+    let op: Replace = { type, offset, data, shift };
+    return op;
+  } else if (type === "drop") {
+    let op: Drop = { type, offset, shift };
+    return op;
+  }
 };

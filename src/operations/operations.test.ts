@@ -1,22 +1,4 @@
-import { applyOp, applyOps, Replace, Insert, Drop } from "./index";
-
-const opGen = (
-  type: string,
-  offset: number,
-  shift: number = 0,
-  data?: string
-) => {
-  if (type === "insert") {
-    let op: Insert = { type, offset, data };
-    return op;
-  } else if (type === "replace") {
-    let op: Replace = { type, offset, data, shift };
-    return op;
-  } else if (type === "drop") {
-    let op: Drop = { type, offset, shift };
-    return op;
-  }
-};
+import { applyOp, applyOps, opGen } from "./index";
 
 describe("apply operations", () => {
   it("apply insert", () => {
