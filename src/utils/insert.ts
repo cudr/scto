@@ -1,4 +1,11 @@
-export default (source, data, offset: number, shift: number = 0) =>
+import { Collate } from "../operations";
+
+export default (
+  source: Collate,
+  data: Collate,
+  offset: number,
+  shift: number = 0
+): Collate =>
   source
     .slice(0, offset)
     .concat(data)

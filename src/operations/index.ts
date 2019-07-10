@@ -23,7 +23,7 @@ export interface Drop {
 
 export type Operation = Replace | Insert | Drop;
 
-export const applyOp = (source: Collate, operation: Operation) => {
+export const applyOp = (source: Collate, operation: Operation): Collate => {
   const { type, offset } = operation;
 
   const { data } = operation as Replace | Insert;
@@ -40,7 +40,7 @@ export const applyOp = (source: Collate, operation: Operation) => {
   }
 };
 
-export const applyOps = (source: Collate, ops: Array<Operation>) => {
+export const applyOps = (source: Collate, ops: Operation[]): Collate => {
   if (!ops.length) return source;
 
   const [headOp, ...tailOps] = ops;
@@ -51,17 +51,17 @@ export const applyOps = (source: Collate, ops: Array<Operation>) => {
 export const opGen = (
   type: string,
   offset: number,
-  shift: number = 0,
+  shift: null | number = 0,
   data?: Collate
-) => {
+): Operation => {
   if (type === "insert") {
     let op: Insert = { type, offset, data };
     return op;
   } else if (type === "replace") {
     let op: Replace = { type, offset, data, shift };
     return op;
-  } else if (type === "drop") {
-    let op: Drop = { type, offset, shift };
+  } else {
+    let op: Drop = { type: "drop", offset, shift };
     return op;
   }
 };

@@ -4,7 +4,11 @@ import { drop, insert } from "../utils";
 
 import { Operation, Replace, Drop } from "../operations";
 
-const stringDiffToOps = (origin: string, modifyed: string, split = " ") => {
+const stringDiffToOps = (
+  origin: string,
+  modifyed: string,
+  split = " "
+): Operation[] => {
   let originList: string[] = origin.split(split);
   let modifyedList: string[] = modifyed.split(split);
 
