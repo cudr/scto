@@ -1,7 +1,7 @@
 import shiftCompare from "./shiftCompare";
 import { opGen } from "../operations";
 
-describe("shift compare", () => {
+describe("string shift compare", () => {
   it("take insert", () => {
     expect(shiftCompare("foo", "foobar", 3)).toStrictEqual(
       opGen("insert", 3, null, "bar")
@@ -39,5 +39,25 @@ describe("shift compare", () => {
     expect(shiftCompare("dfoobar", "dxyzbar", 1)).toStrictEqual(
       opGen("replace", 1, 3, "xyz")
     );
+  });
+});
+
+describe("list shift compare", () => {
+  it("take insert", () => {
+    expect(
+      shiftCompare(["foo", "baz"], ["foo", "bar", "baz"], 1)
+    ).toStrictEqual(opGen("insert", 1, null, ["bar"]));
+  });
+
+  it("take drop", () => {
+    expect(shiftCompare(["foo", "bar", "foo"], ["foo"], 1)).toStrictEqual(
+      opGen("drop", 1, 2)
+    );
+  });
+
+  it("take replace", () => {
+    expect(
+      shiftCompare(["foo", "xyz", "bar"], ["foo", "abc", "bar"], 1)
+    ).toStrictEqual(opGen("replace", 1, 1, ["abc"]));
   });
 });

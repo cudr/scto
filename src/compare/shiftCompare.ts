@@ -1,36 +1,62 @@
-import { Insert, Drop, Replace } from "../operations";
+import { Insert, Drop, Replace, Collate } from "../operations";
 
-const shiftCompare = (origin, modifyed, i = 0, shift = 0) => {
+import discretionShift from "./discretionShift";
+
+const shiftCompare = (origin: Collate, modifyed: Collate, i: number = 0) => {
   if (i >= Math.max(origin.length, modifyed.length)) return null;
 
-  let isShorter = !origin[i];
-  let isLonger = !modifyed[i];
-
-  if (isShorter || origin[i] === modifyed[i + shift]) {
+  if (!origin[i]) {
     let op: Insert = {
       type: "insert",
       offset: i,
-      data: modifyed.slice(i, isShorter ? modifyed.length : i + shift)
+      data: modifyed.slice(i, modifyed.length)
     };
     return op;
-  } else if (origin[i + shift] === modifyed[i + shift]) {
-    let op: Replace = {
-      type: "replace",
-      offset: i,
-      shift: shift,
-      data: modifyed.slice(i, i + shift)
-    };
-    return op;
-  } else if (isLonger || origin[i + shift] === modifyed[i]) {
+  } else if (!modifyed[i]) {
     let op: Drop = {
       type: "drop",
       offset: i,
-      shift: isLonger ? origin.length - i : shift
+      shift: origin.length - i
     };
     return op;
   }
 
-  return shiftCompare(origin, modifyed, i, shift + 1);
+  const shiftPair = discretionShift(origin.slice(i), modifyed.slice(i));
+
+  if (!shiftPair) {
+    let op: Replace = {
+      type: "replace",
+      offset: i,
+      shift: origin.length - i,
+      data: modifyed.slice(i, modifyed.length)
+    };
+    return op;
+  }
+
+  if (shiftPair[1] === 0) {
+    let op: Drop = {
+      type: "drop",
+      offset: i,
+      shift: shiftPair[0]
+    };
+    return op;
+  } else if (shiftPair[0] === 0) {
+    let op: Insert = {
+      type: "insert",
+      offset: i,
+      data: modifyed.slice(i, i + shiftPair[1])
+    };
+    return op;
+  } else {
+    let shift = Math.min(...shiftPair);
+    let op: Replace = {
+      type: "replace",
+      offset: i,
+      shift,
+      data: modifyed.slice(i, i + shift)
+    };
+    return op;
+  }
 };
 
 export default shiftCompare;
