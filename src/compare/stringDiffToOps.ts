@@ -2,7 +2,7 @@ import collateDiffToOps from "./collateDiffToOps";
 
 import { drop, insert } from "../utils";
 
-import { Operation, Replace, Drop } from "../operations";
+import { opGen, Operation, Replace, Insert, Drop } from "../operations";
 
 const stringDiffToOps = (
   origin: string,
@@ -12,7 +12,7 @@ const stringDiffToOps = (
   let originList: string[] = origin.split(split);
   let modifyedList: string[] = modifyed.split(split);
 
-  const listOps = collateDiffToOps(originList, modifyedList);
+  const listOps: Operation[] = collateDiffToOps(originList, modifyedList);
 
   let operations = [],
     i = 0,
@@ -30,40 +30,33 @@ const stringDiffToOps = (
     const { type, offset } = op;
     const { shift = 0 } = op as Replace | Drop;
 
-    const data = originList.slice(offset, offset + shift);
+    const dataOp = op as Insert | Replace;
+
+    const data: string[] = dataOp.data as string[];
+
+    const listData = originList.slice(offset, offset + shift);
 
     if (type === "drop") {
-      operations.push({
-        type,
-        offset: totalOffset,
-        shift: data.join(split).length + split.length
-      });
-
-      originList = drop(originList, listOffset, shift);
-    } else if (type === "insert") {
-      const data = op.data.join(split) + split;
-
-      operations.push({
-        type,
-        offset: totalOffset,
-        data
-      });
-
-      originList = insert(originList, op.data, listOffset);
-    } else if (type === "replace") {
-      const ops: Operation[] = collateDiffToOps(
-        data.join(split),
-        op.data.join(split)
+      operations.push(
+        opGen(type, totalOffset, listData.join(split).length + split.length)
       );
 
-      ops.forEach(o => {
-        operations.push({
-          ...o,
-          offset: totalOffset + o.offset
-        });
-      });
+      originList = drop(originList, listOffset, shift) as string[];
+    } else if (type === "insert") {
+      operations.push(opGen(type, totalOffset, null, data.join(split) + split));
 
-      originList = insert(originList, op.data, listOffset, shift);
+      originList = insert(originList, data, listOffset) as string[];
+    } else if (type === "replace") {
+      const ops: Operation[] = collateDiffToOps(
+        listData.join(split),
+        data.join(split)
+      );
+
+      ops.forEach(({ type, offset, shift, data }) =>
+        operations.push(opGen(type, totalOffset + offset, shift, data))
+      );
+
+      originList = insert(originList, data, listOffset, shift) as string[];
     }
   }
 

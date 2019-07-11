@@ -1,67 +1,7 @@
-import { drop, insert } from "../utils";
+import opGen from "./opGen";
+import applyOp from "./applyOp";
+import applyOps from "./applyOps";
 
-export type Collate = string[] | string;
+export * from "./types";
 
-export interface Replace {
-  type: "replace";
-  offset: number;
-  shift: number;
-  data: Collate;
-}
-
-export interface Insert {
-  type: "insert";
-  offset: number;
-  data: Collate;
-}
-
-export interface Drop {
-  type: "drop";
-  offset: number;
-  shift: number;
-}
-
-export type Operation = Replace | Insert | Drop;
-
-export const applyOp = (source: Collate, operation: Operation): Collate => {
-  const { type, offset } = operation;
-
-  const { data } = operation as Replace | Insert;
-  const { shift } = operation as Replace | Drop;
-
-  if (type === "insert") {
-    return insert(source, data, offset);
-  } else if (type === "drop") {
-    return drop(source, offset, shift);
-  } else if (type === "replace") {
-    return insert(source, data, offset, shift);
-  } else {
-    throw new Error("Operation type is unknown!");
-  }
-};
-
-export const applyOps = (source: Collate, ops: Operation[]): Collate => {
-  if (!ops.length) return source;
-
-  const [headOp, ...tailOps] = ops;
-
-  return applyOps(applyOp(source, headOp), tailOps);
-};
-
-export const opGen = (
-  type: string,
-  offset: number,
-  shift: null | number = 0,
-  data?: Collate
-): Operation => {
-  if (type === "insert") {
-    let op: Insert = { type, offset, data };
-    return op;
-  } else if (type === "replace") {
-    let op: Replace = { type, offset, data, shift };
-    return op;
-  } else {
-    let op: Drop = { type: "drop", offset, shift };
-    return op;
-  }
-};
+export { opGen, applyOp, applyOps };

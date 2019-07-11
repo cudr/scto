@@ -3,15 +3,15 @@ import { drop, insert } from "../utils";
 
 import { Operation, Collate, Replace, Insert, Drop } from "../operations";
 
-const collateDiffToOps = (origin: Collate, modifyed: Collate) => {
+const collateDiffToOps = (origin: Collate, modifyed: Collate): Operation[] => {
   const maxLen = Math.max(origin.length, modifyed.length),
     operations = [];
 
   let i = 0;
 
   for (i; i < maxLen; i++) {
-    let operation: Operation =
-      origin[i] !== modifyed[i] && shiftCompare(origin, modifyed, i);
+    let operation: Operation | null =
+      origin[i] !== modifyed[i] ? shiftCompare(origin, modifyed, i) : null;
 
     if (operation) {
       operations.push(operation);

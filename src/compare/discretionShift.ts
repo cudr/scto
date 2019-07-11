@@ -1,10 +1,9 @@
 import { Collate } from "../operations";
+import { Keyed, Shift } from "./types";
 
-export type Shift = [number, number] | null;
-
-const discretionShift = (one: Collate, two: Collate) => {
-  const accOne = {},
-    accTwo = {},
+const discretionShift = (one: Collate, two: Collate): Shift => {
+  const accOne: Keyed = {},
+    accTwo: Keyed = {},
     max = Math.max(one.length, two.length);
 
   let i: number = 0;
