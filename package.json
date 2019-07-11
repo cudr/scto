@@ -2,7 +2,7 @@
   "name": "scto",
   "version": "0.0.1",
   "description": "Strings compare to OP model",
-  "main": "src/index.js",
+  "main": "lib/index.js",
   "scripts": {
     "prepublishOnly": "npm run build",
     "type-check": "tsc --noEmit",
