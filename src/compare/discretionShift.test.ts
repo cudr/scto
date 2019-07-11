@@ -1,4 +1,4 @@
-import discretionShift, { Shift } from "./discretionShift";
+import discretionShift from "./discretionShift";
 
 let origin = ["xyz", "abc", "def", "xyz"];
 let modifyed = ["foo", "bar", "foo", "abc"];
