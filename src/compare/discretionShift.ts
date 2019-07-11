@@ -1,10 +1,11 @@
 import { Collate } from "../operations";
 
 export type Shift = [number, number] | null;
+export type Keyed = { [s: string]: number };
 
 const discretionShift = (one: Collate, two: Collate) => {
-  const accOne = {},
-    accTwo = {},
+  const accOne: Keyed = {},
+    accTwo: Keyed = {},
     max = Math.max(one.length, two.length);
 
   let i: number = 0;

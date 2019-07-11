@@ -53,7 +53,7 @@ const stringDiffToOps = (
       );
 
       ops.forEach(({ type, offset, shift, data }) =>
-        operations.push(opGen(type, offset, shift, data))
+        operations.push(opGen(type, totalOffset + offset, shift, data))
       );
 
       originList = insert(originList, data, listOffset, shift) as string[];

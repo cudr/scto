@@ -6,7 +6,7 @@ export default (
   offset: number,
   shift: number = 0
 ): Collate =>
-  source
+  (source as any)
     .slice(0, offset)
     .concat(data)
     .concat(source.slice(offset + shift));
