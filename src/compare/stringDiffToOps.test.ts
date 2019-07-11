@@ -10,4 +10,8 @@ describe("string diff to operations", () => {
   it("string diff equals", () => {
     expect(applyOps(origin, stringDiffToOps(origin, modifyed))).toBe(modifyed);
   });
+
+  it("string diff equals test", () => {
+    expect(applyOps(origin, stringDiffToOps(origin, modifyed))).toBe(modifyed);
+  });
 });
