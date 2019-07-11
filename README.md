@@ -2,6 +2,7 @@
 Strings compare to OP (CRDT Operation model)
 
 [![Build Status](https://travis-ci.org/cudr/scto.svg?branch=master)](https://travis-ci.org/cudr/scto)
+<img src="https://img.shields.io/bundlephobia/minzip/scto.svg" />
 
 ### Install
 
