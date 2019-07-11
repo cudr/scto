@@ -10,6 +10,9 @@ const discretionShift = (one: Collate, two: Collate): Shift => {
 
   if (one[i] === two[i]) return [0, 0];
 
+  if (!one[i] || !one[i].length) return [1, 0];
+  if (!two[i] || !two[i].length) return [0, 1];
+
   for (i; i < max; i++) {
     if (!accOne.hasOwnProperty(one[i])) accOne[one[i]] = i;
 

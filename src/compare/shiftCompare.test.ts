@@ -53,11 +53,35 @@ describe("list shift compare", () => {
     expect(shiftCompare(["foo", "bar", "foo"], ["foo"], 1)).toStrictEqual(
       opGen("drop", 1, 2)
     );
+
+    expect(shiftCompare(["foo", "bar", "foo"], ["foo"], 1)).toStrictEqual(
+      opGen("drop", 1, 2)
+    );
+
+    expect(
+      shiftCompare(["foo", "bar", "abc", "foo"], ["foo", "foo"], 1)
+    ).toStrictEqual(opGen("drop", 1, 2));
+
+    expect(
+      shiftCompare(["foo", "bar", "abc", "foo"], ["foo"], 1)
+    ).toStrictEqual(opGen("drop", 1, 3));
   });
 
   it("take replace", () => {
     expect(
       shiftCompare(["foo", "xyz", "bar"], ["foo", "abc", "bar"], 1)
     ).toStrictEqual(opGen("replace", 1, 1, ["abc"]));
+
+    expect(
+      shiftCompare(["foo", "xyz", "def", "bar"], ["foo", "abc", "bar"], 1)
+    ).toStrictEqual(opGen("replace", 1, 2, ["abc"]));
+
+    expect(
+      shiftCompare(
+        ["foo", "xyz", "def", "bar"],
+        ["foo", "abc", "opq", "bar"],
+        1
+      )
+    ).toStrictEqual(opGen("replace", 1, 2, ["abc", "opq"]));
   });
 });

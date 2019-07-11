@@ -9,9 +9,9 @@ const shiftCompare = (
 ): Operation | null => {
   if (i >= Math.max(origin.length, modifyed.length)) return null;
 
-  if (!origin[i]) {
+  if (typeof origin[i] === "undefined") {
     return opGen("insert", i, null, modifyed.slice(i, modifyed.length));
-  } else if (!modifyed[i]) {
+  } else if (typeof modifyed[i] === "undefined") {
     return opGen("drop", i, origin.length - i);
   }
 
@@ -25,13 +25,15 @@ const shiftCompare = (
       modifyed.slice(i, modifyed.length)
     );
 
+  if (shiftPair[0] === 0 && shiftPair[1] === 0) return null;
+
   if (shiftPair[1] === 0) {
     return opGen("drop", i, shiftPair[0]);
   } else if (shiftPair[0] === 0) {
     return opGen("insert", i, null, modifyed.slice(i, i + shiftPair[1]));
   } else {
     let shift = Math.min(...shiftPair);
-    return opGen("replace", i, shift, modifyed.slice(i, i + shift));
+    return opGen("replace", i, shiftPair[0], modifyed.slice(i, i + shift));
   }
 };
 

@@ -1,6 +1,6 @@
 {
   "name": "scto",
-  "version": "0.0.5",
+  "version": "0.0.6",
   "description": "Strings compare to OP model",
   "keywords": [
     "crdt",
@@ -17,7 +17,7 @@
     "build:types": "tsc --emitDeclarationOnly",
     "build:js": "babel src --out-dir lib --extensions \".ts\" --source-maps inline",
     "format": "prettier --write",
-    "test": "jest src/compare/stringDiffToOps.test.ts"
+    "test": "jest"
   },
   "files": [
     "lib"
