@@ -1,8 +1,14 @@
 {
   "name": "scto",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "description": "Strings compare to OP model",
+  "keywords": [
+    "crdt",
+    "operations",
+    "string"
+  ],
   "main": "lib/index.js",
+  "types": "lib/index.d.ts",
   "scripts": {
     "prepublishOnly": "npm run build",
     "type-check": "tsc --noEmit",

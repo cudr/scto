@@ -1,0 +1,19 @@
+language: node_js
+
+node_js:
+  - '11'
+
+env:
+  - workerCount=3 timeout=600000
+
+script:
+  - npm test
+
+install:
+  - npm uninstall typescript --no-save
+  - npm uninstall tslint --no-save
+  - npm install
+
+cache:
+  directories:
+    - node_modules
