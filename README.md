@@ -29,7 +29,7 @@ const operations = stringDiffToOps(origin, modifyed)
 
 const applyed = applyOps(origin, operations)
 
-/* applyed Yet get far discretion fought!
+/* applyed Yet get far discretion fought! */
 
 console.log(applyed === modifyed) // true
 ```
