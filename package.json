@@ -1,6 +1,6 @@
 {
   "name": "scto",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "Strings compare to OP model",
   "main": "lib/index.js",
   "scripts": {

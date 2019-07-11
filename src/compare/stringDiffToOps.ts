@@ -12,12 +12,7 @@ const stringDiffToOps = (
   let originList: string[] = origin.split(split);
   let modifyedList: string[] = modifyed.split(split);
 
-  console.log("originList", originList);
-  console.log("modifyedList", modifyedList);
-
   const listOps: Operation[] = collateDiffToOps(originList, modifyedList);
-
-  console.log("listOps", listOps);
 
   let operations = [],
     i = 0,
@@ -73,8 +68,6 @@ const stringDiffToOps = (
       originList = insert(originList, data, listOffset, shift) as string[];
     }
   }
-
-  console.log("operations", operations);
 
   return operations;
 };
