@@ -1,6 +1,6 @@
 {
   "name": "scto",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "Strings compare to OP model",
   "main": "lib/index.js",
   "scripts": {
@@ -11,7 +11,7 @@
     "build:types": "tsc --emitDeclarationOnly",
     "build:js": "babel src --out-dir lib --extensions \".ts\" --source-maps inline",
     "format": "prettier --write",
-    "test": "jest"
+    "test": "jest src/compare/stringDiffToOps.test.ts"
   },
   "files": [
     "lib"
