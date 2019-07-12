@@ -4,6 +4,8 @@ Strings compare to OP (CRDT Operation model)
 [![Build Status](https://travis-ci.org/cudr/scto.svg?branch=master)](https://travis-ci.org/cudr/scto)
 <img src="https://img.shields.io/bundlephobia/minzip/scto.svg" />
 
+This package useful to compare strings, create inline-typografs with OP data-transfer model.
+
 ### Install
 
 ```bash
@@ -28,9 +30,37 @@ const operations = stringDiffToOps(origin, modifyed)
   ] 
 */
 
-const applyed = applyOps(origin, operations)
-
-/* applyed Yet get far discretion fought! */
+const applyed = applyOps(origin, operations) // Yet get far discretion fought!
 
 console.log(applyed === modifyed) // true
+```
+
+### Possible operations:
+
+replace:
+```
+{
+  type: 'replace',
+  offset: 4,
+  data: 'get',
+  shift: 2
+}
+```
+
+drop:
+```
+{
+  type: 'drop',
+  offset: 12,
+  shift: 5
+}
+```
+
+insert:
+```
+{
+  type: 'insert',
+  offset: 29,
+  data: '!'
+}
 ```
