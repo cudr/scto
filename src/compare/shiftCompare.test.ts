@@ -3,6 +3,9 @@ import { opGen } from "../operations";
 
 describe("string shift compare", () => {
   it("take insert", () => {
+    expect(shiftCompare("", " ", 0)).toStrictEqual(
+      opGen("insert", 0, null, " ")
+    );
     expect(shiftCompare("foo", "foobar", 3)).toStrictEqual(
       opGen("insert", 3, null, "bar")
     );
@@ -30,6 +33,9 @@ describe("string shift compare", () => {
   });
 
   it("take replace", () => {
+    expect(shiftCompare(" ", " ", 0)).toStrictEqual(
+      opGen("replace", 0, 1, " ")
+    );
     expect(shiftCompare("fooxyzbar", "fooabcbar", 3)).toStrictEqual(
       opGen("replace", 3, 3, "abc")
     );

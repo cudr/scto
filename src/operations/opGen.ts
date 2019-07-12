@@ -7,14 +7,11 @@ const opGen = (
   data?: Collate
 ): Operation => {
   if (type === "insert") {
-    let op: Insert = { type, offset, data } as Insert;
-    return op;
+    return { type, offset, data } as Insert;
   } else if (type === "replace") {
-    let op: Replace = { type, offset, data, shift } as Replace;
-    return op;
+    return { type, offset, data, shift } as Replace;
   } else {
-    let op: Drop = { type: "drop", offset, shift } as Drop;
-    return op;
+    return { type: "drop", offset, shift } as Drop;
   }
 };
 

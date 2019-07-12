@@ -9,7 +9,7 @@ const collateDiffToOps = (origin: Collate, modifyed: Collate): Operation[] => {
 
   let i = 0;
 
-  for (i; i < maxLen; i++) {
+  for (i; i <= maxLen; i++) {
     let operation: Operation | null =
       origin[i] !== modifyed[i] ? shiftCompare(origin, modifyed, i) : null;
 
