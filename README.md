@@ -37,30 +37,32 @@ console.log(applyed === modifyed) // true
 
 ### Possible operations:
 
-replace:
+Replace:
 ```
-{
-  type: 'replace',
-  offset: 4,
-  data: 'get',
-  shift: 2
+export interface Replace {
+  type: "replace";
+  offset: number;
+  shift: number;
+  data: Collate;
 }
 ```
 
-drop:
+Drop:
 ```
-{
-  type: 'drop',
-  offset: 12,
-  shift: 5
+export interface Drop {
+  type: "drop";
+  offset: number;
+  shift: number;
+  data?: any;
 }
 ```
 
-insert:
+Insert:
 ```
-{
-  type: 'insert',
-  offset: 29,
-  data: '!'
+export interface Insert {
+  type: "insert";
+  offset: number;
+  shift?: any;
+  data: Collate;
 }
 ```
