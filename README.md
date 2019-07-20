@@ -4,6 +4,8 @@ Text diff compare to OP (CRDT Operation model)
 [![Build Status](https://travis-ci.org/cudr/scto.svg?branch=master)](https://travis-ci.org/cudr/scto)
 <img src="https://img.shields.io/bundlephobia/minzip/scto.svg" />
 
+This package useful to compare strings, create inline-typografs with OP data-transfer model.
+
 ### Install
 
 ```bash
@@ -30,15 +32,12 @@ const operations = stringDiffToOps(origin, modifyed)
   ] 
 */
 
-const applyed = applyOps(origin, operations)
-
-/* applyed Yet get far discretion fought! */
+const applyed = applyOps(origin, operations) // Yet get far discretion fought!
 
 console.log(applyed === modifyed) // true
 ```
 
-Array compare:
-
+Arrays compare:
 ```js
 import { collateDiffToOps, applyOps } from 'scto'
 
@@ -59,4 +58,37 @@ const applyed = applyOps(origin, operations)
 /* ['abc', 'foo', 'baz'] */
 
 console.log(applyed === modifyed) // true
+```
+
+
+### Possible operations:
+
+Replace:
+```
+export interface Replace {
+  type: "replace";
+  offset: number;
+  shift: number;
+  data: Collate;
+}
+```
+
+Drop:
+```
+export interface Drop {
+  type: "drop";
+  offset: number;
+  shift: number;
+  data?: any;
+}
+```
+
+Insert:
+```
+export interface Insert {
+  type: "insert";
+  offset: number;
+  shift?: any;
+  data: Collate;
+}
 ```
