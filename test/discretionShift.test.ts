@@ -1,4 +1,4 @@
-import discretionShift from "./discretionShift";
+import discretionShift from "../src/compare/discretionShift";
 
 describe("discretion shift", () => {
   it("find list shift pair", () => {

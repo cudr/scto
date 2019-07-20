@@ -1,6 +1,6 @@
-import collateDiffToOps from "./collateDiffToOps";
-import { applyOps } from "../operations";
-import { origin, modifyed } from "../test";
+import collateDiffToOps from "../src/compare/collateDiffToOps";
+import { applyOps } from "../src/operations";
+import { origin, modifyed } from "./text_source";
 
 describe("source diff to operations", () => {
   it("list diff equals one", () => {

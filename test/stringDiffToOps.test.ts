@@ -1,6 +1,6 @@
-import stringDiffToOps from "./stringDiffToOps";
-import { applyOps } from "../operations";
-import { origin, modifyed } from "../test";
+import stringDiffToOps from "../src/compare/stringDiffToOps";
+import { applyOps } from "../src/operations";
+import { origin, modifyed } from "./text_source";
 
 describe("string diff to operations", () => {
   it("string diff equals", () => {
