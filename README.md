@@ -35,7 +35,7 @@ const applyed = applyOps(origin, operations) // Yet get far discretion fought!
 console.log(applyed === modifyed) // true
 ```
 
-Arrays compare:
+Array compare:
 ```js
 import { collateDiffToOps, applyOps } from 'scto'
 
