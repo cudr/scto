@@ -4,15 +4,13 @@ Text diff compare to OP (CRDT Operation model)
 [![Build Status](https://travis-ci.org/cudr/scto.svg?branch=master)](https://travis-ci.org/cudr/scto)
 <img src="https://img.shields.io/bundlephobia/minzip/scto.svg" />
 
-This package useful to compare strings, create inline-typografs with OP data-transfer model.
+This package is similar to jsdiff, but generates CRDT-friendly operations. Useful for compare strings to OP data-transfer model.
 
 ### Install
 
 ```bash
 yarn install scto
 ```
-
-This package is similar to jsdiff, but generates CRDT-friendly operations.
 
 ### Example
 
