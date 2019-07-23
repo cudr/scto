@@ -37,8 +37,12 @@ const stringDiffToOps = (
     const listData = originList.slice(offset, offset + shift);
 
     if (type === "drop") {
+      const isLast = listOps.length - i === 1;
+
+      const opShift = listData.join(split).length + split.length;
+
       operations.push(
-        opGen(type, totalOffset, listData.join(split).length + split.length)
+        opGen(type, isLast ? totalOffset - 1 : totalOffset, opShift)
       );
 
       originList = drop(originList, listOffset, shift) as string[];
