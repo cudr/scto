@@ -21,7 +21,8 @@
     "build:types": "tsc --emitDeclarationOnly",
     "build:js": "babel src --out-dir lib --extensions \".ts\" --source-maps inline",
     "format": "prettier --write",
-    "test": "jest"
+    "test": "jest test/",
+    "benchmark": "jest benchmark/"
   },
   "files": [
     "lib"
@@ -37,8 +38,8 @@
     "@babel/preset-typescript": "^7.3.3",
     "@types/jest": "^24.0.15",
     "babel-jest": "^24.8.0",
-    "jest": "^24.8.0",
     "husky": "^3.0.0",
+    "jest": "^24.8.0",
     "lint-staged": "^9.1.0",
     "prettier": "^1.18.2",
     "ts-jest": "^24.0.2",
@@ -46,9 +47,16 @@
     "tslint-config-prettier": "^1.18.0",
     "typescript": "^3.5.2"
   },
+  "optionalDependencies": {
+    "@types/diff": "^4.0.2",
+    "@types/faker": "^4.1.5",
+    "diff": "^4.0.1",
+    "faker": "^4.1.0"
+  },
   "jest": {
     "roots": [
-      "<rootDir>/test"
+      "<rootDir>/test",
+      "<rootDir>/benchmark"
     ],
     "transform": {
       "^.+\\.ts?$": "ts-jest"
