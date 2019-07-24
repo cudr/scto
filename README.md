@@ -58,8 +58,6 @@ const operations = collateDiffToOps(origin, modifyed)
 const applyed = applyOps(origin, operations)
 
 /* ['abc', 'foo', 'baz'] */
-
-console.log(applyed === modifyed) // true
 ```
 
 
