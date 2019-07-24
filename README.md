@@ -6,6 +6,10 @@ Text diff compare to OP (CRDT Operation model)
 
 This package is similar to jsdiff, but generates CRDT-friendly operations. Useful for compare strings to OP data-transfer model.
 
+<img width="353" alt="1  Cudr@MBP-Curd: ~:Projects:SCTO (zsh) 2019-07-24 11-25-33" src="https://user-images.githubusercontent.com/23132107/61777936-85d6e280-ae06-11e9-8daa-ea026289cedd.png">
+
+### x150 faster for strings compare than jsdiff!!!
+
 ### Install
 
 ```bash
