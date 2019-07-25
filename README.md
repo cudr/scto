@@ -17,6 +17,7 @@ yarn install scto
 
 ### Example
 
+Text compare:
 ```js
 import { stringDiffToOps, applyOps } from 'scto'
 
