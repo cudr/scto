@@ -4,7 +4,7 @@ import { applyOps } from "../src/operations";
 import { genSentences, randomizeText } from "./index";
 
 describe("benchmark jsdiff compare", () => {
-  const origin = genSentences(100);
+  const origin = genSentences(50);
   const modifyed = randomizeText(origin);
 
   console.time("csto stringDiffToOps");
