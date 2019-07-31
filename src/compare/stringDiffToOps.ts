@@ -54,7 +54,9 @@ const stringDiffToOps = (
           type,
           totalOffset,
           null,
-          i === listOps.length - 1 ? split + d : d + split
+          i === listOps.length - 1 && listOffset === originList.length
+            ? split + d
+            : d + split
         )
       );
 
