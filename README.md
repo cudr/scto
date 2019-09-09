@@ -79,7 +79,6 @@ export interface Drop {
   type: "drop";
   offset: number;
   shift: number;
-  data?: any;
 }
 ```
 
@@ -88,7 +87,6 @@ Insert:
 export interface Insert {
   type: "insert";
   offset: number;
-  shift?: any;
   data: Collate;
 }
 ```
