@@ -12,13 +12,13 @@ This package is similar to jsdiff, but generates CRDT-friendly operations. Usefu
 ### Install
 
 ```bash
-yarn install scto
+yarn add scto
 ```
 
 ### Example
 
 Text compare:
-```js
+```ts
 import { stringDiffToOps, applyOps } from 'scto'
 
 const origin = 'Yet so far hath discretion fought'
@@ -40,7 +40,7 @@ console.log(applyed === modifyed) // true
 ```
 
 Array compare:
-```js
+```ts
 import { collateDiffToOps, applyOps } from 'scto'
 
 const origin = ['foo', 'bar', 'baz']
@@ -64,7 +64,7 @@ const applyed = applyOps(origin, operations)
 ### Possible operations:
 
 Replace:
-```
+```ts
 export interface Replace {
   type: "replace";
   offset: number;
@@ -74,7 +74,7 @@ export interface Replace {
 ```
 
 Drop:
-```
+```ts
 export interface Drop {
   type: "drop";
   offset: number;
@@ -83,7 +83,7 @@ export interface Drop {
 ```
 
 Insert:
-```
+```ts
 export interface Insert {
   type: "insert";
   offset: number;
