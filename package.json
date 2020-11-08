@@ -52,7 +52,7 @@
     "@types/faker": "^4.1.5",
     "diff": "^4.0.1",
     "diff-match-patch": "^1.0.4",
-    "faker": "^4.1.0"
+    "faker": "^5.1.0"
   },
   "jest": {
     "roots": [
