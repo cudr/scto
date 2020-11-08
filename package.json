@@ -36,7 +36,7 @@
     "@babel/plugin-proposal-object-rest-spread": "^7.5.1",
     "@babel/preset-env": "^7.5.0",
     "@babel/preset-typescript": "^7.3.3",
-    "@types/jest": "^24.0.15",
+    "@types/jest": "^26.0.15",
     "babel-jest": "^26.6.3",
     "husky": "^3.0.0",
     "jest": "^24.8.0",
@@ -52,7 +52,7 @@
     "@types/faker": "^4.1.5",
     "diff": "^4.0.1",
     "diff-match-patch": "^1.0.4",
-    "faker": "^4.1.0"
+    "faker": "^5.1.0"
   },
   "jest": {
     "roots": [
