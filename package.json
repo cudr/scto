@@ -49,7 +49,7 @@
   },
   "optionalDependencies": {
     "@types/diff": "^4.0.2",
-    "@types/faker": "^4.1.5",
+    "@types/faker": "^5.1.4",
     "diff": "^4.0.1",
     "diff-match-patch": "^1.0.4",
     "faker": "^5.1.0"
