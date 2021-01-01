@@ -48,7 +48,7 @@
     "typescript": "^3.5.2"
   },
   "optionalDependencies": {
-    "@types/diff": "^4.0.2",
+    "@types/diff": "^5.0.0",
     "@types/faker": "^5.1.4",
     "diff": "^5.0.0",
     "diff-match-patch": "^1.0.4",
