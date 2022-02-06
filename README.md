@@ -1,6 +1,6 @@
 # scto
 
-String Compare To Operations (CRDT Operation model)
+Strings Comparing To Operations (CRDT Operation model)
 
 [![Build Status](https://travis-ci.org/cudr/scto.svg?branch=master)](https://travis-ci.org/cudr/scto)
 <img src="https://img.shields.io/bundlephobia/minzip/scto.svg" />
