@@ -1,9 +1,12 @@
-import shiftCompare from "./shiftCompare";
+import { shiftCompare } from "./shift-compare";
 import { drop, insert } from "../utils";
 
 import { Operation, Collate, Replace, Insert, Drop } from "../operations";
 
-const collateDiffToOps = (origin: Collate, modifyed: Collate): Operation[] => {
+export const collateDiffToOps = (
+  origin: Collate,
+  modifyed: Collate
+): Operation[] => {
   const maxLen = Math.max(origin.length, modifyed.length),
     operations = [];
 
@@ -34,5 +37,3 @@ const collateDiffToOps = (origin: Collate, modifyed: Collate): Operation[] => {
 
   return operations;
 };
-
-export default collateDiffToOps;

@@ -1,10 +1,10 @@
-import collateDiffToOps from "./collateDiffToOps";
+import { collateDiffToOps } from "./collate-diff-to-operations";
 
 import { drop, insert } from "../utils";
 
 import { opGen, Operation, Replace, Insert, Drop } from "../operations";
 
-const stringDiffToOps = (
+export const stringDiffToOps = (
   origin: string,
   modifyed: string,
   split = " "
@@ -77,5 +77,3 @@ const stringDiffToOps = (
 
   return operations;
 };
-
-export default stringDiffToOps;

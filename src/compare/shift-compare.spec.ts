@@ -1,5 +1,5 @@
-import shiftCompare from "../src/compare/shiftCompare";
-import { opGen } from "../src/operations";
+import { shiftCompare } from "./shift-compare";
+import { opGen } from "../operations";
 
 describe("string shift compare", () => {
   it("take insert", () => {

@@ -1,6 +1,6 @@
 import { Collate } from "../operations";
 
-export default (
+export const insert = (
   source: Collate,
   data: Collate,
   offset: number,

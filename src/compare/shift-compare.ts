@@ -1,8 +1,8 @@
 import { opGen, Collate, Operation } from "../operations";
 
-import discretionShift from "./discretionShift";
+import { discretionShift } from "./discretion-shift";
 
-const shiftCompare = (
+export const shiftCompare = (
   origin: Collate,
   modifyed: Collate,
   i: number = 0
@@ -36,5 +36,3 @@ const shiftCompare = (
     return opGen("replace", i, shiftPair[0], modifyed.slice(i, i + shift));
   }
 };
-
-export default shiftCompare;

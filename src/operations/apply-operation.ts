@@ -1,7 +1,7 @@
 import { Collate, Operation, Replace, Insert, Drop } from "./types";
 import { insert, drop } from "../utils";
 
-const applyOp = (source: Collate, operation: Operation): Collate => {
+export const applyOp = (source: Collate, operation: Operation): Collate => {
   const { type, offset } = operation;
 
   const { data } = operation as Replace | Insert;
@@ -17,5 +17,3 @@ const applyOp = (source: Collate, operation: Operation): Collate => {
     throw new Error("Operation type is unknown!");
   }
 };
-
-export default applyOp;

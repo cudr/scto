@@ -1,4 +1,4 @@
-import { applyOp, applyOps, opGen } from "../src/operations/index";
+import { applyOp, applyOps, opGen } from "./index";
 
 describe("apply operations", () => {
   it("apply insert", () => {

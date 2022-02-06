@@ -1,6 +1,6 @@
 import { Operation, Collate, Insert, Replace, Drop } from "./types";
 
-const opGen = (
+export const opGen = (
   type: string,
   offset: number,
   shift: null | number = 0,
@@ -14,5 +14,3 @@ const opGen = (
     return { type: "drop", offset, shift } as Drop;
   }
 };
-
-export default opGen;

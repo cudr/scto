@@ -1,4 +1,4 @@
-import discretionShift from "../src/compare/discretionShift";
+import { discretionShift } from "./discretion-shift";
 
 type Item = string[][] | string[];
 
@@ -10,8 +10,20 @@ const listPairs = [
   pair([["", "bar"], [" "]], undefined),
   pair([["bar"], ["bar"]], [0, 0]),
   pair([["", "bar"], ["bar"]], [1, 0]),
-  pair([["", "", "bar"], [" ", "bar"]], [2, 1]),
-  pair([["xyz", "abc", "def", "xyz"], ["foo", "bar", "foo", "abc"]], [1, 3])
+  pair(
+    [
+      ["", "", "bar"],
+      [" ", "bar"]
+    ],
+    [2, 1]
+  ),
+  pair(
+    [
+      ["xyz", "abc", "def", "xyz"],
+      ["foo", "bar", "foo", "abc"]
+    ],
+    [1, 3]
+  )
 ];
 
 const stringPairs = [

@@ -1,7 +1,7 @@
 import { Collate, Operation } from "./types";
-import applyOp from "./applyOp";
+import { applyOp } from "./apply-operation";
 
-const applyOps = (source: Collate, ops: Operation[]): Collate => {
+export const applyOps = (source: Collate, ops: Operation[]): Collate => {
   let i = 0,
     len = ops.length;
 
@@ -17,5 +17,3 @@ const applyOps = (source: Collate, ops: Operation[]): Collate => {
 
   return source;
 };
-
-export default applyOps;

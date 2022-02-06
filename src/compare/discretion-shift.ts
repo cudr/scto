@@ -1,7 +1,7 @@
 import { Collate } from "../operations";
 import { Keyed, Shift } from "./types";
 
-const discretionShift = (one: Collate, two: Collate): Shift => {
+export const discretionShift = (one: Collate, two: Collate): Shift => {
   const accOne: Keyed = {},
     accTwo: Keyed = {},
     max = Math.max(one.length, two.length);
@@ -27,5 +27,3 @@ const discretionShift = (one: Collate, two: Collate): Shift => {
     }
   }
 };
-
-export default discretionShift;
