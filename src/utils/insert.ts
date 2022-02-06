@@ -1,4 +1,4 @@
-import { Collate } from "../operations";
+import { Collate } from '../operations'
 
 export const insert = (
   source: Collate,
@@ -9,4 +9,4 @@ export const insert = (
   (source as any)
     .slice(0, offset)
     .concat(data)
-    .concat(source.slice(offset + shift));
+    .concat(source.slice(offset + shift))

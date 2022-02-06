@@ -1,19 +1,19 @@
-import { Collate, Operation } from "./types";
-import { applyOp } from "./apply-operation";
+import { Collate, Operation } from './types'
+import { applyOp } from './apply-operation'
 
 export const applyOps = (source: Collate, ops: Operation[]): Collate => {
   let i = 0,
-    len = ops.length;
+    len = ops.length
 
-  if (!len) return source;
+  if (!len) return source
 
   for (i; i < len; i++) {
-    const [headOp, ...tailOps] = ops;
+    const [headOp, ...tailOps] = ops
 
-    source = applyOp(source, headOp);
+    source = applyOp(source, headOp)
 
-    ops = tailOps;
+    ops = tailOps
   }
 
-  return source;
-};
+  return source
+}

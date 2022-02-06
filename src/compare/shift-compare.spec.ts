@@ -1,93 +1,91 @@
-import { shiftCompare } from "./shift-compare";
-import { opGen } from "../operations";
+import { shiftCompare } from './shift-compare'
+import { opGen } from '../operations'
 
-describe("string shift compare", () => {
-  it("take insert", () => {
-    expect(shiftCompare("", " ", 0)).toStrictEqual(
-      opGen("insert", 0, null, " ")
-    );
-    expect(shiftCompare("foo", "foobar", 3)).toStrictEqual(
-      opGen("insert", 3, null, "bar")
-    );
-    expect(shiftCompare("foo", "fbaroo", 1)).toStrictEqual(
-      opGen("insert", 1, null, "bar")
-    );
-    expect(shiftCompare("foo", "ffoo", 1)).toStrictEqual(
-      opGen("insert", 1, null, "f")
-    );
-    expect(shiftCompare("foo", "foofoo", 3)).toStrictEqual(
-      opGen("insert", 3, null, "foo")
-    );
-    expect(shiftCompare("foo", "bazfoo", 0)).toStrictEqual(
-      opGen("insert", 0, null, "baz")
-    );
-  });
+describe('string shift compare', () => {
+  it('take insert', () => {
+    expect(shiftCompare('', ' ', 0)).toStrictEqual(
+      opGen('insert', 0, null, ' ')
+    )
+    expect(shiftCompare('foo', 'foobar', 3)).toStrictEqual(
+      opGen('insert', 3, null, 'bar')
+    )
+    expect(shiftCompare('foo', 'fbaroo', 1)).toStrictEqual(
+      opGen('insert', 1, null, 'bar')
+    )
+    expect(shiftCompare('foo', 'ffoo', 1)).toStrictEqual(
+      opGen('insert', 1, null, 'f')
+    )
+    expect(shiftCompare('foo', 'foofoo', 3)).toStrictEqual(
+      opGen('insert', 3, null, 'foo')
+    )
+    expect(shiftCompare('foo', 'bazfoo', 0)).toStrictEqual(
+      opGen('insert', 0, null, 'baz')
+    )
+  })
 
-  it("take drop", () => {
-    expect(shiftCompare("fbaroo", "foo", 1)).toStrictEqual(opGen("drop", 1, 3));
-    expect(shiftCompare("foofoo", "foo", 3)).toStrictEqual(opGen("drop", 3, 3));
-    expect(shiftCompare("foobazfoo", "foofoo", 3)).toStrictEqual(
-      opGen("drop", 3, 3)
-    );
-    expect(shiftCompare("bazfoo", "foo", 0)).toStrictEqual(opGen("drop", 0, 3));
-  });
+  it('take drop', () => {
+    expect(shiftCompare('fbaroo', 'foo', 1)).toStrictEqual(opGen('drop', 1, 3))
+    expect(shiftCompare('foofoo', 'foo', 3)).toStrictEqual(opGen('drop', 3, 3))
+    expect(shiftCompare('foobazfoo', 'foofoo', 3)).toStrictEqual(
+      opGen('drop', 3, 3)
+    )
+    expect(shiftCompare('bazfoo', 'foo', 0)).toStrictEqual(opGen('drop', 0, 3))
+  })
 
-  it("take replace", () => {
-    expect(shiftCompare(" ", " ", 0)).toStrictEqual(
-      opGen("replace", 0, 1, " ")
-    );
-    expect(shiftCompare("fooxyzbar", "fooabcbar", 3)).toStrictEqual(
-      opGen("replace", 3, 3, "abc")
-    );
-    expect(shiftCompare("fooxyzbar", "fmtrdeger", 1)).toStrictEqual(
-      opGen("replace", 1, 7, "mtrdege")
-    );
-    expect(shiftCompare("dfoobar", "dxyzbar", 1)).toStrictEqual(
-      opGen("replace", 1, 3, "xyz")
-    );
-  });
-});
+  it('take replace', () => {
+    expect(shiftCompare(' ', ' ', 0)).toStrictEqual(opGen('replace', 0, 1, ' '))
+    expect(shiftCompare('fooxyzbar', 'fooabcbar', 3)).toStrictEqual(
+      opGen('replace', 3, 3, 'abc')
+    )
+    expect(shiftCompare('fooxyzbar', 'fmtrdeger', 1)).toStrictEqual(
+      opGen('replace', 1, 7, 'mtrdege')
+    )
+    expect(shiftCompare('dfoobar', 'dxyzbar', 1)).toStrictEqual(
+      opGen('replace', 1, 3, 'xyz')
+    )
+  })
+})
 
-describe("list shift compare", () => {
-  it("take insert", () => {
+describe('list shift compare', () => {
+  it('take insert', () => {
     expect(
-      shiftCompare(["foo", "baz"], ["foo", "bar", "baz"], 1)
-    ).toStrictEqual(opGen("insert", 1, null, ["bar"]));
-  });
+      shiftCompare(['foo', 'baz'], ['foo', 'bar', 'baz'], 1)
+    ).toStrictEqual(opGen('insert', 1, null, ['bar']))
+  })
 
-  it("take drop", () => {
-    expect(shiftCompare(["foo", "bar", "foo"], ["foo"], 1)).toStrictEqual(
-      opGen("drop", 1, 2)
-    );
+  it('take drop', () => {
+    expect(shiftCompare(['foo', 'bar', 'foo'], ['foo'], 1)).toStrictEqual(
+      opGen('drop', 1, 2)
+    )
 
-    expect(shiftCompare(["foo", "bar", "foo"], ["foo"], 1)).toStrictEqual(
-      opGen("drop", 1, 2)
-    );
+    expect(shiftCompare(['foo', 'bar', 'foo'], ['foo'], 1)).toStrictEqual(
+      opGen('drop', 1, 2)
+    )
 
     expect(
-      shiftCompare(["foo", "bar", "abc", "foo"], ["foo", "foo"], 1)
-    ).toStrictEqual(opGen("drop", 1, 2));
+      shiftCompare(['foo', 'bar', 'abc', 'foo'], ['foo', 'foo'], 1)
+    ).toStrictEqual(opGen('drop', 1, 2))
 
     expect(
-      shiftCompare(["foo", "bar", "abc", "foo"], ["foo"], 1)
-    ).toStrictEqual(opGen("drop", 1, 3));
-  });
+      shiftCompare(['foo', 'bar', 'abc', 'foo'], ['foo'], 1)
+    ).toStrictEqual(opGen('drop', 1, 3))
+  })
 
-  it("take replace", () => {
+  it('take replace', () => {
     expect(
-      shiftCompare(["foo", "xyz", "bar"], ["foo", "abc", "bar"], 1)
-    ).toStrictEqual(opGen("replace", 1, 1, ["abc"]));
+      shiftCompare(['foo', 'xyz', 'bar'], ['foo', 'abc', 'bar'], 1)
+    ).toStrictEqual(opGen('replace', 1, 1, ['abc']))
 
     expect(
-      shiftCompare(["foo", "xyz", "def", "bar"], ["foo", "abc", "bar"], 1)
-    ).toStrictEqual(opGen("replace", 1, 2, ["abc"]));
+      shiftCompare(['foo', 'xyz', 'def', 'bar'], ['foo', 'abc', 'bar'], 1)
+    ).toStrictEqual(opGen('replace', 1, 2, ['abc']))
 
     expect(
       shiftCompare(
-        ["foo", "xyz", "def", "bar"],
-        ["foo", "abc", "opq", "bar"],
+        ['foo', 'xyz', 'def', 'bar'],
+        ['foo', 'abc', 'opq', 'bar'],
         1
       )
-    ).toStrictEqual(opGen("replace", 1, 2, ["abc", "opq"]));
-  });
-});
+    ).toStrictEqual(opGen('replace', 1, 2, ['abc', 'opq']))
+  })
+})

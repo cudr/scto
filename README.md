@@ -1,4 +1,5 @@
 # scto
+
 Text diff compare to OP (CRDT Operation model)
 
 [![Build Status](https://travis-ci.org/cudr/scto.svg?branch=master)](https://travis-ci.org/cudr/scto)
@@ -18,6 +19,7 @@ yarn add scto
 ### Example
 
 Text compare:
+
 ```ts
 import { stringDiffToOps, applyOps } from 'scto'
 
@@ -40,6 +42,7 @@ console.log(applyed === modifyed) // true
 ```
 
 Array compare:
+
 ```ts
 import { collateDiffToOps, applyOps } from 'scto'
 
@@ -60,33 +63,35 @@ const applyed = applyOps(origin, operations)
 /* ['abc', 'foo', 'baz'] */
 ```
 
-
 ### Possible operations:
 
 Replace:
+
 ```ts
 export interface Replace {
-  type: "replace";
-  offset: number;
-  shift: number;
-  data: Collate;
+  type: 'replace'
+  offset: number
+  shift: number
+  data: Collate
 }
 ```
 
 Drop:
+
 ```ts
 export interface Drop {
-  type: "drop";
-  offset: number;
-  shift: number;
+  type: 'drop'
+  offset: number
+  shift: number
 }
 ```
 
 Insert:
+
 ```ts
 export interface Insert {
-  type: "insert";
-  offset: number;
-  data: Collate;
+  type: 'insert'
+  offset: number
+  data: Collate
 }
 ```
